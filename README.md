@@ -76,3 +76,5 @@ RustWasm Eth can be used to build decentralized identity management solutions th
 
 RustWasm Eth represents a significant advancement in the field of decentralized application development. By combining the strengths of Rust and WebAssembly, the project provides a powerful, secure, and efficient platform for building the next generation of Ethereum dApps. As the project evolves, it will continue to push the boundaries of what is possible in decentralized application development, setting new standards for performance, security, and scalability.
 
+
+## please be carrefull about to run code! <<<<<<< under development 
