@@ -1,0 +1,120 @@
+/* Dark mode için temel renk tanımlamaları */
+:root {
+    --background-color-dark: #1e1e1e;
+    --text-color-dark: #f0f0f0;
+    --primary-color: #0078d7;
+    --hover-color: #005bb5;
+}
+
+/* Genel stil */
+body {
+    background-color: var(--background-color-dark);
+    color: var(--text-color-dark);
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header stili */
+header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+/* Ana içerik stili */
+main {
+    padding: 20px;
+    text-align: center;
+}
+
+/* Button stili */
+button {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--primary-color);
+    color: white;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: var(--hover-color);
+}
+
+/* Responsive tasarım */
+@media (max-width: 600px) {
+    header {
+        font-size: 1.2em;
+    }
+    
+    button {
+        width: 100%;
+        margin: 5px 0;
+    }
+}
+/* Dark mode için temel renk tanımlamaları */
+:root {
+    --background-color-dark: #1e1e1e;
+    --text-color-dark: #f0f0f0;
+    --primary-color: #0078d7;
+    --hover-color: #005bb5;
+}
+
+/* Genel stil */
+body {
+    background-color: var(--background-color-dark);
+    color: var(--text-color-dark);
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header stili */
+header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+/* Ana içerik stili */
+main {
+    padding: 20px;
+    text-align: center;
+}
+
+/* Button stili */
+button {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--primary-color);
+    color: white;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: var(--hover-color);
+}
+
+/* Responsive tasarım */
+@media (max-width: 600px) {
+    header {
+        font-size: 1.2em;
+    }
+    
+    button {
+        width: 100%;
+        margin: 5px 0;
+    }
+}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RustWasm Eth</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to RustWasm Eth</h1>
+    </header>
+    <main>
+        <p>This is an example of a Rust + WebAssembly project by nzengi</p>
+        <button id="greet-button">Greet</button>
+    </main>
+
+    <script type="module">
+        import init, { greet } from './pkg/rustwasm_eth.js';
+
+        async function run() {
+            await init();
+            document.getElementById('greet-button').onclick = greet;
+        };
+
+        run();
+    </script>
+</body>
+</html>
