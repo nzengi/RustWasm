@@ -1,4 +1,4 @@
-# RustWasm Eth - Whitepaper
+# RustWasm Eth SDK
 
 ## Abstract
 
