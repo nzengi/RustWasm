@@ -1,28 +1,28 @@
 +------------------------------------+
-|           API Layer                |
+|            API Layer               |
 | (Rust API, Documentation, CLI)     |
 +------------------------------------+
                |
                v
 +------------------------------------+
-|         WASM Integration Layer     |
-| (WASM Modülleri, wasm-bindgen)     |
+|        WASM Integration Layer      |
+| (WASM Modules, wasm-bindgen)       |
 +------------------------------------+
                |
                v
 +------------------------------------+
 |         Transaction Layer          |
-| (İşlem Gönderimi, Gaz Hesaplama)   |
+| (Transaction Submission, Gas Fees) |
 +------------------------------------+
                |
                v
 +------------------------------------+
 |           Wallet Layer             |
-| (Cüzdan Yönetimi, Anahtar İmzalama)|
+| (Wallet Management, Key Signing)   |
 +------------------------------------+
                |
                v
 +------------------------------------+
-|             Core Layer             |
-| (Rust-EVM, SputnikVM, Foundry)     |
+|           Core Layer               |
+| (Rust-EVM, SputnikVM)              |
 +------------------------------------+
