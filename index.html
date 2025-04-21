@@ -1,29 +1,197 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RustWasm Eth</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RustWasm Eth SDK</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <meta
+      name="description"
+      content="A Rust and WebAssembly powered Ethereum integration toolkit"
+    />
+    <script>
+      // Error handling
+      window.addEventListener("error", function (e) {
+        console.error("Global error caught:", e.error || e.message);
+        const statusEl = document.getElementById("web3-status");
+        if (statusEl) {
+          statusEl.textContent =
+            "Error: " + (e.error ? e.error.message : e.message);
+          statusEl.className = "status-error";
+        }
+      });
+
+      // Page load check
+      window.addEventListener("load", function () {
+        console.log("Page fully loaded");
+        console.log("window.ethereum:", window.ethereum);
+
+        // Check status after 5 seconds - if unchanged, there's an error
+        setTimeout(function () {
+          const statusEl = document.getElementById("web3-status");
+          if (statusEl && statusEl.textContent === "Checking...") {
+            statusEl.textContent =
+              "Error: WebAssembly couldn't be loaded. Check the console.";
+            statusEl.className = "status-error";
+          }
+        }, 5000);
+      });
+    </script>
+  </head>
+  <body>
     <header>
-        <h1>Welcome to RustWasm Eth</h1>
+      <h1>RustWasm Eth SDK</h1>
+      <p>Ethereum integration with Rust and WebAssembly</p>
     </header>
+
     <main>
-        <p>This is an example of a Rust + WebAssembly project by nzengi</p>
+      <div class="intro">
+        <p>
+          This application allows you to interact with the Ethereum blockchain
+          using Rust and WebAssembly.
+        </p>
+        <p>
+          You can connect your MetaMask wallet and interact with the blockchain
+          for testing purposes.
+        </p>
+      </div>
+
+      <div class="actions">
         <button id="greet-button">Greet</button>
+      </div>
+
+      <div id="status-container" class="status-container">
+        <p>Web3 status: <span id="web3-status">Checking...</span></p>
+      </div>
+
+      <!-- Contract Interaction Section -->
+      <div id="contract-section" class="contract-section" style="display: none">
+        <h3>Smart Contract Interaction</h3>
+
+        <!-- Contract Deployment -->
+        <div class="card">
+          <h4>Deploy New Contract</h4>
+          <div class="form-group">
+            <label for="contract-bytecode">Contract Bytecode</label>
+            <textarea
+              id="contract-bytecode"
+              placeholder="Enter contract bytecode (0x...)"
+              rows="2"
+            ></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="contract-abi">Contract ABI</label>
+            <textarea
+              id="contract-abi"
+              placeholder="Enter contract ABI (JSON format)"
+              rows="2"
+            ></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="constructor-args"
+              >Constructor Arguments (comma separated)</label
+            >
+            <input
+              type="text"
+              id="constructor-args"
+              placeholder="e.g., 100, 'Token Name', 0x123..."
+            />
+          </div>
+
+          <button id="deploy-contract-btn" class="action-btn">
+            Deploy Contract
+          </button>
+        </div>
+
+        <!-- Contract Interaction -->
+        <div class="card">
+          <h4>Interact with Contract</h4>
+          <div class="form-group">
+            <label for="contract-address">Contract Address</label>
+            <input type="text" id="contract-address" placeholder="0x..." />
+          </div>
+
+          <div class="form-group">
+            <label for="function-name">Function Name</label>
+            <input
+              type="text"
+              id="function-name"
+              placeholder="e.g., balanceOf"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="function-args"
+              >Function Arguments (comma separated)</label
+            >
+            <input
+              type="text"
+              id="function-args"
+              placeholder="e.g., 0x123, 100"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="function-type">Function Type</label>
+            <select id="function-type">
+              <option value="view">View/Read (no gas)</option>
+              <option value="nonpayable">Transaction (requires gas)</option>
+            </select>
+          </div>
+
+          <button id="call-function-btn" class="action-btn">
+            Call Function
+          </button>
+        </div>
+
+        <!-- Contract Event Listener -->
+        <div class="card">
+          <h4>Listen for Contract Events</h4>
+          <div class="form-group">
+            <label for="event-contract-address">Contract Address</label>
+            <input
+              type="text"
+              id="event-contract-address"
+              placeholder="0x..."
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="event-name">Event Name</label>
+            <input type="text" id="event-name" placeholder="e.g., Transfer" />
+          </div>
+
+          <button id="listen-events-btn" class="action-btn">
+            Listen for Events
+          </button>
+          <button
+            id="stop-events-btn"
+            class="action-btn secondary"
+            style="display: none"
+          >
+            Stop Listening
+          </button>
+
+          <div id="events-log" class="events-log" style="display: none">
+            <h5>Events Log</h5>
+            <div id="events-list"></div>
+          </div>
+        </div>
+      </div>
     </main>
 
-    <script type="module">
-        import init, { greet } from './pkg/rustwasm_eth.js';
+    <footer>
+      <p>
+        &copy; 2023 RustWasm Eth SDK |
+        <a href="https://github.com/nzengi/rustwasm-eth" target="_blank"
+          >GitHub</a
+        >
+      </p>
+    </footer>
 
-        async function run() {
-            await init();
-            document.getElementById('greet-button').onclick = greet;
-        };
-
-        run();
-    </script>
-</body>
+    <script type="module" src="js/index.js"></script>
+  </body>
 </html>

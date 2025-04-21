@@ -25,7 +25,6 @@ The vision of RustWasm Eth is to empower developers with the tools necessary to 
 ### Design Principles
 
 - **Performance**: RustWasm Eth is designed to maximize performance by offloading computational tasks to Rust and running them through WebAssembly. This approach significantly reduces execution times compared to JavaScript-based solutions.
-  
 - **Security**: Security is a paramount concern in RustWasm Eth. Rust's ownership model and strict compile-time checks prevent many common vulnerabilities such as buffer overflows and memory leaks, making dApps built with RustWasm Eth inherently more secure.
 
 - **Scalability**: The modular architecture of RustWasm Eth allows developers to easily scale their applications by adding new features and components without compromising performance or security.
@@ -33,41 +32,51 @@ The vision of RustWasm Eth is to empower developers with the tools necessary to 
 ## Key Features
 
 ### 1. Ethereum Smart Contract Interaction
+
 RustWasm Eth provides seamless integration with Ethereum smart contracts. Developers can write Rust code that interacts directly with smart contracts, allowing for secure and efficient transactions, data retrieval, and contract execution.
 
 ### 2. Wallet Integration
+
 The project includes built-in support for Ethereum wallets, enabling users to authenticate, sign transactions, and manage assets directly within the dApp. This feature is critical for creating user-friendly and secure decentralized applications.
 
 ### 3. Decentralized Storage
+
 Future iterations of RustWasm Eth will support decentralized storage solutions, allowing dApps to store and retrieve data securely and efficiently on the blockchain or other decentralized storage networks.
 
 ### 4. Advanced Cryptography
+
 RustWasm Eth incorporates advanced cryptographic algorithms to ensure the integrity and confidentiality of transactions. This feature is particularly important for financial applications and other use cases where data security is critical.
 
 ## Use Cases
 
 ### Decentralized Finance (DeFi)
+
 RustWasm Eth is well-suited for building DeFi applications due to its high performance and security features. It can handle complex financial transactions, smart contract interactions, and secure user authentication, making it ideal for platforms like decentralized exchanges, lending protocols, and stablecoins.
 
 ### Supply Chain Management
+
 By utilizing RustWasm Eth, developers can create supply chain management dApps that track the provenance of goods, ensure data integrity, and provide transparency across the supply chain. The project's scalability and security features make it particularly well-suited for this use case.
 
 ### Identity Management
+
 RustWasm Eth can be used to build decentralized identity management solutions that protect user privacy while enabling secure and verifiable identity verification. This is crucial for applications such as voting systems, healthcare records, and secure logins.
 
 ## Roadmap
 
 ### Phase 1: Core Development
+
 - Complete the Rust core and WebAssembly integration.
 - Develop basic Ethereum smart contract interaction and wallet integration features.
 - Build a minimal user interface for demonstration purposes.
 
 ### Phase 2: Feature Expansion
+
 - Integrate advanced cryptographic algorithms.
 - Add support for decentralized storage solutions.
 - Enhance wallet integration with multi-signature and hardware wallet support.
 
 ### Phase 3: Ecosystem Development
+
 - Develop a comprehensive SDK for third-party developers.
 - Establish a community-driven marketplace for RustWasm Eth modules and plugins.
 - Launch a developer portal with extensive documentation, tutorials, and support.
@@ -76,5 +85,69 @@ RustWasm Eth can be used to build decentralized identity management solutions th
 
 RustWasm Eth represents a significant advancement in the field of decentralized application development. By combining the strengths of Rust and WebAssembly, the project provides a powerful, secure, and efficient platform for building the next generation of Ethereum dApps. As the project evolves, it will continue to push the boundaries of what is possible in decentralized application development, setting new standards for performance, security, and scalability.
 
+## please be carefull about to run code! <<<<<<< under development
 
-## please be carefull about to run code! <<<<<<< under development 
+## Installation and Running
+
+To run this project, you need the following requirements:
+
+1. [Rust and Cargo](https://www.rust-lang.org/tools/install)
+2. [wasm-pack](https://rustwasm.github.io/wasm-pack/installer/)
+3. Web server (you can use [basic-http-server](https://crates.io/crates/basic-http-server) for development)
+
+### Step 1: Install Dependencies
+
+```bash
+# Install Rust toolchain (you can skip if already installed)
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+# Install wasm-pack
+cargo install wasm-pack
+
+# Install development server
+cargo install basic-http-server
+```
+
+### Step 2: Build the Project
+
+```bash
+# Compile the WebAssembly module
+wasm-pack build --target web
+
+# This will create WebAssembly modules in the ./pkg directory
+```
+
+### Step 3: Run the Project
+
+```bash
+# Run the project on a simple web server
+basic-http-server .
+```
+
+You can view the application by opening `http://localhost:4000` in your browser.
+
+### MetaMask Integration
+
+This application requires MetaMask or another Web3 wallet for interaction with the Ethereum blockchain. To use the Ethereum interaction features:
+
+1. Install the [MetaMask](https://metamask.io/) wallet in your browser
+2. Create an account or import your existing account
+3. Connect your wallet by clicking the "Connect to Ethereum" button in the application
+
+## Development
+
+To develop the project:
+
+1. Edit the Rust code in the `src/` directory
+2. Edit the JavaScript interface in the `js/` directory
+3. Run `wasm-pack build --target web` to recompile after making changes
+
+## Testing
+
+```bash
+# Run Rust unit tests
+cargo test
+
+# Run WebAssembly tests
+wasm-pack test --node
+```

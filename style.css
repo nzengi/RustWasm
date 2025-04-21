@@ -1,120 +1,364 @@
-/* Dark mode için temel renk tanımlamaları */
+/* RustWasm Eth SDK için ana stiller */
+
 :root {
-    --background-color-dark: #1e1e1e;
-    --text-color-dark: #f0f0f0;
-    --primary-color: #0078d7;
-    --hover-color: #005bb5;
+  --primary-color: #4e56a6;
+  --secondary-color: #7986cb;
+  --accent-color: #3d3b8e;
+  --bg-color: #f5f7ff;
+  --text-color: #333;
+  --error-color: #e53935;
+  --success-color: #43a047;
+  --warning-color: #ff9800;
+  --border-radius: 8px;
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
 }
 
-/* Genel stil */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-    background-color: var(--background-color-dark);
-    color: var(--text-color-dark);
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  padding: 0;
+  margin: 0;
+  padding-bottom: 60px;
 }
 
-/* Header stili */
 header {
-    background-color: var(--primary-color);
-    color: white;
-    padding: 20px;
-    text-align: center;
-    font-size: 1.5em;
+  background-color: var(--primary-color);
+  color: white;
+  text-align: center;
+  padding: 2rem 1rem;
+  box-shadow: var(--box-shadow);
 }
 
-/* Ana içerik stili */
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
 main {
-    padding: 20px;
-    text-align: center;
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
 }
 
-/* Button stili */
+p {
+  margin-bottom: 1rem;
+}
+
 button {
-    padding: 10px 20px;
-    margin: 10px;
-    border: none;
-    border-radius: 5px;
-    background-color: var(--primary-color);
-    color: white;
-    cursor: pointer;
-    font-size: 1em;
-    transition: background-color 0.3s;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-weight: bold;
+  transition: var(--transition);
+  margin: 0.5rem 0.5rem 0.5rem 0;
 }
 
 button:hover {
-    background-color: var(--hover-color);
+  background-color: var(--accent-color);
+  transform: translateY(-2px);
 }
 
-/* Responsive tasarım */
-@media (max-width: 600px) {
-    header {
-        font-size: 1.2em;
-    }
-    
-    button {
-        width: 100%;
-        margin: 5px 0;
-    }
-}
-/* Dark mode için temel renk tanımlamaları */
-:root {
-    --background-color-dark: #1e1e1e;
-    --text-color-dark: #f0f0f0;
-    --primary-color: #0078d7;
-    --hover-color: #005bb5;
+button:active {
+  transform: translateY(0);
 }
 
-/* Genel stil */
-body {
-    background-color: var(--background-color-dark);
-    color: var(--text-color-dark);
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+.eth-button {
+  background-color: var(--secondary-color);
 }
 
-/* Header stili */
-header {
-    background-color: var(--primary-color);
-    color: white;
-    padding: 20px;
-    text-align: center;
-    font-size: 1.5em;
+.result-container {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  background-color: rgba(0, 0, 0, 0.05);
+  min-height: 100px;
 }
 
-/* Ana içerik stili */
-main {
-    padding: 20px;
-    text-align: center;
+.error {
+  color: var(--error-color);
+  font-weight: bold;
+  padding: 0.5rem;
+  border-radius: var(--border-radius);
+  background-color: rgba(229, 57, 53, 0.1);
 }
 
-/* Button stili */
-button {
-    padding: 10px 20px;
-    margin: 10px;
-    border: none;
-    border-radius: 5px;
-    background-color: var(--primary-color);
-    color: white;
-    cursor: pointer;
-    font-size: 1em;
-    transition: background-color 0.3s;
+.success {
+  color: var(--success-color);
+  font-weight: bold;
+  padding: 0.5rem;
+  border-radius: var(--border-radius);
+  background-color: rgba(67, 160, 71, 0.1);
 }
 
-button:hover {
-    background-color: var(--hover-color);
+.warning {
+  color: var(--warning-color);
+  font-weight: bold;
+  padding: 0.5rem;
+  border-radius: var(--border-radius);
+  background-color: rgba(255, 152, 0, 0.1);
 }
 
-/* Responsive tasarım */
-@media (max-width: 600px) {
-    header {
-        font-size: 1.2em;
-    }
-    
-    button {
-        width: 100%;
-        margin: 5px 0;
-    }
+.accounts-list {
+  list-style: none;
+  padding: 0;
+}
+
+.accounts-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  margin-bottom: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.03);
+  border-radius: var(--border-radius);
+  word-break: break-all;
+}
+
+code {
+  font-family: "Courier New", Courier, monospace;
+  background-color: rgba(0, 0, 0, 0.05);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.copy-btn {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.8rem;
+  margin-left: 0.5rem;
+  background-color: var(--accent-color);
+}
+
+.network-info {
+  margin-top: 1rem;
+}
+
+.network-info p {
+  padding: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.03);
+  border-radius: var(--border-radius);
+  margin-bottom: 0.5rem;
+}
+
+/* Duyarlı tasarım */
+@media (max-width: 768px) {
+  main {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+
+  header {
+    padding: 1.5rem 1rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  button {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    padding: 1rem;
+  }
+
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  main {
+    padding: 1rem;
+  }
+
+  button {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+    margin: 0.25rem;
+    display: block;
+    width: 100%;
+  }
+
+  .accounts-list li {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .copy-btn {
+    margin-top: 0.5rem;
+    margin-left: 0;
+  }
+}
+
+/* Footer stili */
+footer {
+  background-color: var(--primary-color);
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+footer a {
+  color: white;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+footer a:hover {
+  text-decoration: underline;
+  opacity: 0.9;
+}
+
+.status-container {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background-color: rgba(0, 0, 0, 0.03);
+  border-radius: var(--border-radius);
+}
+
+#web3-status {
+  font-weight: bold;
+}
+
+.intro {
+  margin-bottom: 2rem;
+  border-left: 4px solid var(--primary-color);
+  padding-left: 1rem;
+}
+
+.actions {
+  margin-bottom: 1.5rem;
+}
+
+.status-ok {
+  color: var(--success-color);
+}
+
+.status-error {
+  color: var(--error-color);
+}
+
+/* New styles for contract interaction */
+.contract-section {
+  margin-top: 2rem;
+  border-top: 2px solid var(--primary-color);
+  padding-top: 1.5rem;
+}
+
+.card {
+  background-color: #f8f9ff;
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.card h4 {
+  color: var(--primary-color);
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 0.5rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: var(--border-radius);
+  font-family: inherit;
+  font-size: 0.9rem;
+  transition: var(--transition);
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: var(--primary-color);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(78, 86, 166, 0.2);
+}
+
+.action-btn {
+  background-color: var(--primary-color);
+  color: white;
+  width: 100%;
+  padding: 0.75rem;
+  margin-top: 1rem;
+  font-size: 1rem;
+}
+
+.action-btn.secondary {
+  background-color: #9e9e9e;
+}
+
+.events-log {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background-color: #f1f1f1;
+  border-radius: var(--border-radius);
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.events-log h5 {
+  margin-bottom: 0.75rem;
+  color: var(--text-color);
+}
+
+#events-list {
+  font-family: monospace;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.event-item {
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  background-color: white;
+  border-radius: 4px;
+  border-left: 3px solid var(--secondary-color);
+}
+
+.event-item .event-name {
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.event-item .event-data {
+  margin-top: 0.25rem;
+  word-break: break-all;
 }
